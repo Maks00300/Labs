@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "udw/l35Lwa5H11/Pe+YBFLT4ISQTs5IAhT8S2DOnUjBMHp0mY2jnrEiY/q+FdcsTqeIvqbg9WnhR3hPp4heCyA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\пк\\OneDrive\\Рабочий стол\\Lab_4\\Lab_4.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\пк\\.nuget\\packages\\mcmaster.extensions.commandlineutils\\4.0.1\\mcmaster.extensions.commandlineutils.4.0.1.nupkg.sha512",
+    "C:\\Users\\пк\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,1 @@
+echo "ASPNETCORE_ENVORONMENT=Development" >> /etc/environment

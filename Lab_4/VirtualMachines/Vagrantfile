@@ -1,0 +1,47 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box ="bento/ubuntu-18.04"
+
+  config.vm.network "forwarded_port", guest: 5000, host: 5002
+  
+  config.vm.box_check_update=false
+  config.ssh.insert_key=false
+  config.vm.box_download_insecure
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui=true
+    vb.name="ubuntu-local"
+    vb.memory=2048
+    vb.cpus=2
+  end
+  config.vm.hostname="ubuntu-test-local"
+ #================================================First part==========================================================================
+  config.vm.provision "shell", inline: "wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb"
+  config.vm.provision "shell", inline: "sudo dpkg -i packages-microsoft-prod.deb"
+  config.vm.provision "shell", inline: "rm packages-microsoft-prod.deb"
+  config.vm.provision "shell", inline: "sudo apt-get update && sudo apt-get install -y dotnet-sdk-6.0"
+
+  config.vm.provision "shell", inline: "sudo mkdir -p /var/baget"
+ 
+  config.vm.provision "shell", inline: "sudo rm -rf /var/baget/src"
+  config.vm.provision "shell", inline: "curl -L -o /tmp/baget.zip https://github.com/loic-sharma/BaGet/archive/refs/tags/v0.4.0-preview2.zip"
+  config.vm.provision "shell", inline: "sudo mkdir -p /var/baget/src"
+  config.vm.provision "shell", inline: "sudo chmod +x /var/baget/src"
+  config.vm.provision "shell", inline: "sudo apt-get install unzip"
+  config.vm.provision "shell", inline: "sudo unzip /tmp/baget.zip -d /var/baget/src"
+ 
+  config.vm.provision "shell", inline: "echo 'ASPNETCORE_ENVIRONMENT=Development' >> /etc/environment"
+ 
+  config.vm.provision "shell", inline: "sudo rm -rf /var/baget/app"
+  config.vm.provision "shell", inline: "sudo dotnet build /var/baget/src/BaGet-0.4.0-preview2/src/BaGet -c Release -o /var/baget/app"
+  config.vm.provision "shell", inline: "sudo dotnet publish /var/baget/src/BaGet-0.4.0-preview2/src/BaGet -c Release -o /var/baget/app"
+  config.vm.provision "shell", inline: "sudo chmod g+w /var/baget/app"
+ 
+
+  #config.vm.provision "shell", inline: "sudo kill -9 $(sudo lsof -t -i:5000)"
+  config.vm.provision "shell", inline: "cd /var/baget/app && sudo dotnet BaGet.dll --urls http://*:5000"
+ 
+
+  #================================================Second part==========================================================================
+   #config.vm.provision "shell", inline: "sudo dotnet nuget add source http://localhost:5000/v3/index.json"
+  #config.vm.provision "shell", inline: "sudo dotnet tool install --global krossplatform-sample --version 1.0.3"
+end

@@ -1,0 +1,6 @@
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\Lab_4.exe
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\Lab_4.dll
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\Lab_4.deps.json
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\Lab_4.runtimeconfig.json
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\Lab_4.pdb
+C:\Users\Vlad\Desktop\Univer\4.k.1.c\Crossplatform\Lab_4\bin\Release\net6.0\publish\McMaster.Extensions.CommandLineUtils.dll
